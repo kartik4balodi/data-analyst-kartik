@@ -34,6 +34,8 @@ By implementing a complete data pipeline using AWS S3, Glue DataBrew, Glue Studi
 - Offers both allocated and spent amounts for accurate analysis.
 - Relevant to urban planning, resource allocation, and municipal governance.
 
+![DAP]( Images/DAP.png)![image](https://github.com/user-attachments/assets/c3de49ab-1bd9-4557-b313-ad2c54d21ac6)
+
 ---
 
 ## Methodology
