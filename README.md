@@ -34,7 +34,7 @@ By implementing a complete data pipeline using AWS S3, Glue DataBrew, Glue Studi
 - Offers both allocated and spent amounts for accurate analysis.
 - Relevant to urban planning, resource allocation, and municipal governance.
 
-![DAP]( Images/DAP.png)![image](https://github.com/user-attachments/assets/c3de49ab-1bd9-4557-b313-ad2c54d21ac6)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/DAP.png)
 
 ---
 
@@ -44,6 +44,8 @@ This project follows a structured, cloud-native data analytics workflow leveragi
 
 ### Step 1: Data Ingestion
 The analytical process began by sourcing the *2025 Multi-Year Capital Project Budget* dataset from the City of Vancouver Open Data Portal. This structured data was uploaded to an Amazon S3 bucket (`finance-raw-kartik`), which served as the **raw data zone**. The dataset was stored in CSV format under `service category/2025_budgets.csv`, forming the foundation for all subsequent data processing activities.
+
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/AWS%20S3%20Raw.png)
 
 ### Step 2: Data Profiling
 Using **AWS Glue DataBrew**, an interactive data profiling project was configured to assess the quality and structure of the raw data. This step identified:
@@ -58,6 +60,10 @@ Profiling metrics and visual summaries were generated for all 20 columns. Cleane
 
 This stage enabled a comprehensive understanding of data readiness before applying transformations.
 
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/AWS%20Profiling.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Profiling%20Prj.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Profiling%20Job.png)
+
 ### Step 3: Data Cleaning
 A cleaning recipe was created in **AWS Glue DataBrew** to standardize the dataset:
 - Filled missing forecast values with default values (e.g., `0.00`)
@@ -66,8 +72,15 @@ A cleaning recipe was created in **AWS Glue DataBrew** to standardize the datase
 
 This process was visualized using DataBrew's lineage tracking interface, offering full traceability from raw ingestion to cleaned output. The cleaned dataset (479 rows × 20 columns) was written back to Amazon S3 in both CSV and partitioned Parquet formats.
 
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Data%20Lineage.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Recipe.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Cleaning.png)
+
 ### Step 4: Data Cataloging
 To support structured analytics, a **Glue Crawler** (`finance-crawler-kartik`) was created to automatically extract metadata and populate the **AWS Glue Data Catalog**. The crawler detected schema, partitions, and file format, and generated corresponding tables in the catalog under the database `finance-datacatalog-kartik`. This enabled **Amazon Athena** to query the datasets directly without manual schema definition.
+
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Crawler.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Datacatalog.png)
 
 ### Step 5: Data Summarization (ETL)
 A visual **ETL job** was developed in **AWS Glue Studio** (`finance-dataenriching-kartik`) to transform and summarize the cleaned data. The job:
@@ -77,10 +90,16 @@ A visual **ETL job** was developed in **AWS Glue Studio** (`finance-dataenrichin
 
 The output was stored in Parquet format in the curated S3 bucket (`finance-2025budget-cur-kartik/final_output/`), partitioned by year, month, and service category. This enhanced performance for downstream querying and reporting.
 
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/ETL.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Summarization.png)
+
 ### Step 6: Querying and Analysis
 Using **Amazon Athena**, SQL queries were executed on the curated dataset to analyze:
 - The average available budget per service category
 - The average capital expenditure in 2025
+
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Query.png)
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/Data%20enriching.png)
 
 ---
 
