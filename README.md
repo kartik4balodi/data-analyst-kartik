@@ -132,7 +132,7 @@ Using **Amazon Athena**, SQL queries were executed on the curated dataset to ana
 
 ---
 
-## Sample Insights
+## Insights
 
 - **Housing** and **Public Safety** had the highest capital expenditures.
 - **Parks & Public Open Spaces** were significantly underutilized based on budget vs. actual usage.
