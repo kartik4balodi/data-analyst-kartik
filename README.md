@@ -5,6 +5,7 @@ This project builds an AWS-based **Data Analytics Platform (DAP)** to evaluate t
 
 By implementing a complete data pipeline using AWS S3, Glue DataBrew, Glue Studio, and Athena, this project enables a systematic approach for government stakeholders to monitor fiscal performance, ensure transparency, and make data-driven decisions.
 
+![Pipeline Flow](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Descriptive%20Analysis.png)
 ---
 
 ## Project Title
