@@ -304,12 +304,12 @@ Glue jobs are directly integrated with CloudWatch for real-time logging of job p
 
 ## Deliverables
 
-Secure and encrypted storage in Amazon S3  
-Bucket versioning and cross-region replication rules  
-Transparent ETL workflows with AWS Glue Studio  
-Quality control logic routing valid/invalid records  
-Full audit logs using AWS CloudTrail  
-CloudWatch dashboards, logs, and alarms  
-Visual documentation and screenshots of implementation
+- Secure and encrypted storage in Amazon S3
+- Bucket versioning and cross-region replication rules
+- Transparent ETL workflows with AWS Glue Studio
+- Quality control logic routing valid/invalid records
+- Full audit logs using AWS CloudTrail
+- CloudWatch dashboards, logs, and alarms
+- Visual documentation and screenshots of implementation
 
 ---
