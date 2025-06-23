@@ -201,15 +201,13 @@ We utilized AWS KMS to apply default encryption across all data buckets—financ
 
 Each bucket uses AWS KMS-managed keys for default encryption. All incoming data is automatically encrypted to ensure compliance with privacy and security standards.
 
-📍 _Insert Screenshots:_  
-![KMS Key Setup](images/figure1_kms_key.png)
-- `figure1_kms_key.png` – KMS key creation
-- 
+![KMS Key Creation](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure1_kms_key.png)
+
 Shows the custom KMS key created via the AWS console. This key is used to manage access policies and control encryption for S3 buckets.
 
-- `figure2_encryption_s3raw.png` – Encryption on raw bucket  
-- `figure3_encryption_s3cln.png` – Encryption on clean bucket  
-- `figure4_encryption_s3cur.png` – Encryption on curated bucket
+![raw](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure2_encryption_s3raw.png)
+![cln](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure3_encryption_s3cln.png)
+![cur](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure4_encryption_s3cur.png)
 
 Depict how each S3 bucket was configured to use the KMS key for default encryption. You can see in the AWS console under "Default Encryption" that the buckets are set to use SSE-KMS (Server-Side Encryption with KMS).
 
@@ -218,10 +216,9 @@ Versioning was enabled on all three buckets. This allows every version of every 
 
 Show how versioning is enabled via the "Properties" tab of each S3 bucket. This configuration ensures that users can recover earlier versions of files if needed.
 
-📍 _Insert Screenshots:_  
-- `figure5_versioning_s3raw.png`  
-- `figure6_versioning_s3cln.png`  
-- `figure7_versioning_s3cur.png`
+![raw](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure5_versioning_s3raw.png)
+![cln](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure6_versioning_s3cln.png)
+![cur](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure7_versioning_s3cur.png)
 
 **3. Replication Rules**  
 To support disaster recovery, replication rules were applied to each bucket. These rules allow automatic replication of data objects to another S3 bucket (potentially in a different region), ensuring redundancy in case of regional failures or system crashes.
@@ -229,10 +226,9 @@ Data replication is enabled across buckets and potentially regions, enhancing di
 
 Illustrate the replication settings on the S3 console. Each screenshot displays the "Replication Rule Configuration" with source and destination bucket mappings, ensuring business continuity.
 
-📍 _Insert Screenshots:_  
-- `figure8_replication_s3raw.png`  
-- `figure9_replication_s3cln.png`  
-- `figure10_replication_s3cur.png`
+![raw](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure8_replication_s3raw.png)
+![cln](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure9_replication_s3cln.png)
+![cur](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure10_replication_s3cur.png)
 
 **Conclusion:** Through encryption, versioning, and replication, the DAP achieves a high level of resilience and compliance, addressing both operational risks and industry-specific regulatory needs.
 
@@ -245,8 +241,7 @@ The governance framework for this platform ensures data traceability, lineage, a
 We used AWS Glue Studio’s visual drag-and-drop interface to design ETL workflows that move data from raw to clean to curated formats. This interface allows for an intuitive setup of transformations, making it accessible even to stakeholders with limited technical backgrounds.
 The workflow includes logic to validate incoming records. Records that pass the quality checks are routed to the "Pass" S3 folder, while records that fail are routed to the "Failed" folder. This automated bifurcation aids in maintaining clean datasets and helps analysts quickly investigate data anomalies.
 
-📍 _Insert Screenshot:_  
-- `figure11_etl_gluestudio.png` – Glue pipeline design
+![glue](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure11_etl_gluestudio.png)
 
 Displays the Glue Studio canvas where the transformation logic is defined. You can observe the flow of components such as data sources, transformation nodes (like filter and map), and destinations.
 
@@ -256,8 +251,7 @@ Each ETL job was named methodically based on its role and position in the pipeli
 **3. Execution Audit**  
 After developing the ETL pipeline, it was executed for testing. During this process, a job failure occurred not due to an error, but because all records passed the validation and there were no entries that matched the "Failed" logic branch.
 
-📍 _Insert Screenshot:_  
-- `figure12_etl_jobrun.png` – Job execution status
+![etl job run](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure12_etl_jobrun.png)
 
 Captures the job run status in Glue Studio. The log clearly shows the success/failure status and highlights the practical scenario of a failed branch not receiving any data—confirming that the pipeline was correctly structured and logically validated.
 
@@ -277,16 +271,14 @@ CloudTrail records all user activities and API calls within the AWS environment.
 
 This provides a full audit trail to detect unauthorized access or abnormal behavior.
 
-📍 _Insert Screenshot:_  
-- `figure13_cloudtrail.png` – CloudTrail filtered logs
+![cloud trail](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure13_cloudtrail.png)
 
 Shows a CloudTrail event history filtered by service (e.g., S3 or Glue), clearly listing the user, timestamp, and action performed. This enables the team to answer “who did what and when” with precision.
 
 **2. Amazon CloudWatch**  
 Monitors ETL job metrics such as duration, status, and failure. Dashboards and alarms are set to alert administrators of anomalies or delays.
 
-📍 _Insert Screenshot:_  
-- `figure14_cloudwatch.png` – CloudWatch metrics and alarms
+![cloud watch](https://github.com/kartik4balodi/data-analyst-kartik/blob/main/Images/figure14_cloudwatch.png)
 
 Displays a CloudWatch dashboard showing metrics such as job success rate, duration, and failure count. Alarm thresholds are also visible, configured to send notifications when thresholds are crossed.
 
@@ -297,7 +289,7 @@ Glue jobs are directly integrated with CloudWatch for real-time logging of job p
 
 ---
 
-## 🧰 Tools and Technologies
+## Tools and Technologies
 
 | Tool / Service           | Purpose                                                                 |
 |--------------------------|-------------------------------------------------------------------------|
@@ -310,14 +302,14 @@ Glue jobs are directly integrated with CloudWatch for real-time logging of job p
 
 ---
 
-## 📦 Deliverables
+## Deliverables
 
-✅ Secure and encrypted storage in Amazon S3  
-✅ Bucket versioning and cross-region replication rules  
-✅ Transparent ETL workflows with AWS Glue Studio  
-✅ Quality control logic routing valid/invalid records  
-✅ Full audit logs using AWS CloudTrail  
-✅ CloudWatch dashboards, logs, and alarms  
-✅ Visual documentation and screenshots of implementation
+Secure and encrypted storage in Amazon S3  
+Bucket versioning and cross-region replication rules  
+Transparent ETL workflows with AWS Glue Studio  
+Quality control logic routing valid/invalid records  
+Full audit logs using AWS CloudTrail  
+CloudWatch dashboards, logs, and alarms  
+Visual documentation and screenshots of implementation
 
 ---
