@@ -137,3 +137,187 @@ Using **Amazon Athena**, SQL queries were executed on the curated dataset to ana
 - **Housing** and **Public Safety** had the highest capital expenditures.
 - **Parks & Public Open Spaces** were significantly underutilized based on budget vs. actual usage.
 - **Childcare** and **Community Facilities** had moderate allocations but lower actual spending, suggesting either underperformance or operational constraints.
+
+---
+
+# Project 2 - Data Security
+
+## Descriptive Analysis
+
+This project showcases the design and implementation of a secure and scalable Data Analytics Platform (DAP) using AWS services for the City of Vancouver’s 2025 financial data. The solution emphasizes cloud-native principles such as automation, observability, data traceability, and security.
+
+It focuses on three critical capabilities:
+
+- **Data Security** – Ensuring confidentiality, integrity, and durability through encryption, versioning, and replication.
+- **Data Governance** – Creating an auditable and well-documented ETL workflow using AWS Glue Studio.
+- **Data Monitoring** – Leveraging AWS CloudTrail and CloudWatch for comprehensive logging and real-time alerting.
+
+---
+
+## Project Description
+
+The City of Vancouver DAP project implements a robust AWS-based data pipeline to process public sector budget data. This pipeline facilitates the collection, transformation, validation, and summarization of financial data while upholding compliance and governance standards. The solution integrates Amazon S3 for data storage, AWS Glue for ETL, KMS for encryption, and AWS observability tools for continuous monitoring.
+
+---
+
+## Project Title
+
+**AWS Data Analytic Platform for The City of Vancouver**
+
+---
+
+## Objective
+
+To develop a reliable, secure, and traceable cloud data platform that:
+
+- Encrypts sensitive financial datasets
+- Enables version control and disaster recovery
+- Implements traceable ETL pipelines
+- Supports continuous monitoring and system observability
+
+---
+
+## Dataset
+
+The primary dataset used is the **City of Vancouver 2025 Capital Budget**, processed through three S3 buckets:
+
+- `finance-raw-kartik` – raw ingested files
+- `finance-cln-kartik` – cleaned and validated data
+- `finance-2025budget-cur-kartik` – curated output for analysis
+
+Each bucket reflects a logical step in the ETL life cycle: ingestion, transformation, and delivery.
+
+---
+
+## Methodology
+
+The methodology is divided into three major implementation phases:
+
+### Step 6: Data Security
+To ensure the integrity, confidentiality, and availability of sensitive financial data stored in the AWS cloud, a multi-layered security strategy was implemented. The design of the Data Analytics Platform (DAP) includes robust encryption, versioning, and replication across all Amazon S3 buckets used in the ETL pipeline.
+
+**1. AWS Key Management Service (KMS)And Encryption**  
+We utilized AWS KMS to apply default encryption across all data buckets—finance-raw-kartik, finance-cln-kartik, and finance-2025budget-cur-kartik. Default encryption ensures that any object uploaded to the bucket is automatically encrypted using an AWS-managed key, without manual intervention. This minimizes the risk of human error while maintaining compliance with data protection standards.
+
+Each bucket uses AWS KMS-managed keys for default encryption. All incoming data is automatically encrypted to ensure compliance with privacy and security standards.
+
+📍 _Insert Screenshots:_  
+![KMS Key Setup](images/figure1_kms_key.png)
+- `figure1_kms_key.png` – KMS key creation
+- 
+Shows the custom KMS key created via the AWS console. This key is used to manage access policies and control encryption for S3 buckets.
+
+- `figure2_encryption_s3raw.png` – Encryption on raw bucket  
+- `figure3_encryption_s3cln.png` – Encryption on clean bucket  
+- `figure4_encryption_s3cur.png` – Encryption on curated bucket
+
+Depict how each S3 bucket was configured to use the KMS key for default encryption. You can see in the AWS console under "Default Encryption" that the buckets are set to use SSE-KMS (Server-Side Encryption with KMS).
+
+**2. S3 Versioning**  
+Versioning was enabled on all three buckets. This allows every version of every object to be preserved. It is particularly crucial for collaborative environments where automated pipelines could overwrite files or introduce bugs.
+
+Show how versioning is enabled via the "Properties" tab of each S3 bucket. This configuration ensures that users can recover earlier versions of files if needed.
+
+📍 _Insert Screenshots:_  
+- `figure5_versioning_s3raw.png`  
+- `figure6_versioning_s3cln.png`  
+- `figure7_versioning_s3cur.png`
+
+**3. Replication Rules**  
+To support disaster recovery, replication rules were applied to each bucket. These rules allow automatic replication of data objects to another S3 bucket (potentially in a different region), ensuring redundancy in case of regional failures or system crashes.
+Data replication is enabled across buckets and potentially regions, enhancing disaster recovery capabilities.
+
+Illustrate the replication settings on the S3 console. Each screenshot displays the "Replication Rule Configuration" with source and destination bucket mappings, ensuring business continuity.
+
+📍 _Insert Screenshots:_  
+- `figure8_replication_s3raw.png`  
+- `figure9_replication_s3cln.png`  
+- `figure10_replication_s3cur.png`
+
+**Conclusion:** Through encryption, versioning, and replication, the DAP achieves a high level of resilience and compliance, addressing both operational risks and industry-specific regulatory needs.
+
+---
+
+### Step 7: Data Governance
+The governance framework for this platform ensures data traceability, lineage, accountability, and quality control through AWS Glue Studio and associated services.
+
+**1. Visual ETL with AWS Glue Studio**  
+We used AWS Glue Studio’s visual drag-and-drop interface to design ETL workflows that move data from raw to clean to curated formats. This interface allows for an intuitive setup of transformations, making it accessible even to stakeholders with limited technical backgrounds.
+The workflow includes logic to validate incoming records. Records that pass the quality checks are routed to the "Pass" S3 folder, while records that fail are routed to the "Failed" folder. This automated bifurcation aids in maintaining clean datasets and helps analysts quickly investigate data anomalies.
+
+📍 _Insert Screenshot:_  
+- `figure11_etl_gluestudio.png` – Glue pipeline design
+
+Displays the Glue Studio canvas where the transformation logic is defined. You can observe the flow of components such as data sources, transformation nodes (like filter and map), and destinations.
+
+**2. Metadata and Versioning**  
+Each ETL job was named methodically based on its role and position in the pipeline. AWS Glue automatically supports job versioning, allowing users to track historical changes, roll back to earlier configurations, and maintain reproducibility. Metadata tagging further enhances discoverability and classification of jobs and datasets in the AWS Glue Data Catalog.
+
+**3. Execution Audit**  
+After developing the ETL pipeline, it was executed for testing. During this process, a job failure occurred not due to an error, but because all records passed the validation and there were no entries that matched the "Failed" logic branch.
+
+📍 _Insert Screenshot:_  
+- `figure12_etl_jobrun.png` – Job execution status
+
+Captures the job run status in Glue Studio. The log clearly shows the success/failure status and highlights the practical scenario of a failed branch not receiving any data—confirming that the pipeline was correctly structured and logically validated.
+
+**Conclusion:** Governance mechanisms such as lineage tracking, quality validation, and ETL job auditing enable the platform to maintain reliable, reproducible, and accountable data operations—key pillars in any enterprise-grade analytics environment.
+
+---
+
+### Step 8: Data Monitoring
+Monitoring was implemented using two complementary AWS services: CloudTrail for user and API activity logging, and CloudWatch for real-time system monitoring and alerting.
+
+**1. AWS CloudTrail**  
+CloudTrail records all user activities and API calls within the AWS environment. For this project, it tracks actions such as:
+
+- Access to S3 buckets
+- Execution of Glue jobs
+- IAM role or policy changes
+
+This provides a full audit trail to detect unauthorized access or abnormal behavior.
+
+📍 _Insert Screenshot:_  
+- `figure13_cloudtrail.png` – CloudTrail filtered logs
+
+Shows a CloudTrail event history filtered by service (e.g., S3 or Glue), clearly listing the user, timestamp, and action performed. This enables the team to answer “who did what and when” with precision.
+
+**2. Amazon CloudWatch**  
+Monitors ETL job metrics such as duration, status, and failure. Dashboards and alarms are set to alert administrators of anomalies or delays.
+
+📍 _Insert Screenshot:_  
+- `figure14_cloudwatch.png` – CloudWatch metrics and alarms
+
+Displays a CloudWatch dashboard showing metrics such as job success rate, duration, and failure count. Alarm thresholds are also visible, configured to send notifications when thresholds are crossed.
+
+**3. Glue Job Integration with CloudWatch**  
+Glue jobs are directly integrated with CloudWatch for real-time logging of job performance and error tracking, supporting root-cause analysis and operational diagnostics.
+
+**Conclusion:** The combination of CloudTrail and CloudWatch enables both proactive monitoring and retrospective auditing, creating a comprehensive observability framework that enhances security, performance, and accountability across the platform.
+
+---
+
+## 🧰 Tools and Technologies
+
+| Tool / Service           | Purpose                                                                 |
+|--------------------------|-------------------------------------------------------------------------|
+| Amazon S3                | Stores raw, cleaned, and curated datasets                               |
+| AWS Key Management Service (KMS) | Encrypts data at rest                                            |
+| AWS Glue Studio          | Visual interface for ETL transformation                                 |
+| AWS Glue Data Catalog    | Manages schema and metadata                                              |
+| AWS CloudTrail           | Tracks all AWS account activities                                       |
+| Amazon CloudWatch        | Monitors system health and job performance                              |
+
+---
+
+## 📦 Deliverables
+
+✅ Secure and encrypted storage in Amazon S3  
+✅ Bucket versioning and cross-region replication rules  
+✅ Transparent ETL workflows with AWS Glue Studio  
+✅ Quality control logic routing valid/invalid records  
+✅ Full audit logs using AWS CloudTrail  
+✅ CloudWatch dashboards, logs, and alarms  
+✅ Visual documentation and screenshots of implementation
+
+---
