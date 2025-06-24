@@ -313,3 +313,165 @@ Glue jobs are directly integrated with CloudWatch for real-time logging of job p
 - Visual documentation and screenshots of implementation
 
 ---
+
+# Project 3 - AWS Cloud Foundations Portfolio
+
+# AWS Cloud Foundations Portfolio
+This portfolio presents a comprehensive reflection on foundational AWS concepts through 12 case studies, each linked to practical labs and real-world application. The project highlights the understanding and application of AWS services including cloud deployment, cost analysis, identity management, virtual networking, serverless computing, and storage—all within an academic context.  
+
+The following sections are organized thematically by core AWS service areas, with each case study offering a detailed analysis, real lab activities, and the key takeaways learned throughout the journey.
+
+---
+
+## AWS Deployment and Service Models
+
+### Case Study 1: Traditional vs. Cloud Computing  
+This case compares traditional on-premises computing with cloud computing. Traditional models require upfront investment in physical servers, cooling infrastructure, and IT staff. These environments lack scalability and require manual provisioning, which increases operational burden.
+
+In contrast, AWS enables on-demand resource provisioning, scalability based on actual usage, and access to global services without maintaining physical hardware.
+
+<img width="653" alt="image" src="https://github.com/user-attachments/assets/68aee31d-70de-4cf7-97f5-40bfc81cd1c3" />
+<img width="516" alt="image" src="https://github.com/user-attachments/assets/79f9500f-dbae-4074-810c-35ecad7fd2f7" />
+
+**Key Learning**: Cloud adoption transforms IT from a capital-intensive to an operational model, improving agility, reducing hardware dependency, and enhancing innovation.
+
+---
+
+### Case Study 2: Cloud Deployment Models  
+This study explores the characteristics and use cases of public, private, hybrid, and multi-cloud deployments. Public cloud (like AWS) offers shared resources and scalability, while private clouds offer enhanced control and are suited for sensitive academic or research data. Hybrid models combine both, often used by universities needing flexibility with legacy systems.
+
+<img width="1155" alt="image" src="https://github.com/user-attachments/assets/aab434c8-f37e-4d6c-8c1e-b726e977c59c" />
+<img width="769" alt="image" src="https://github.com/user-attachments/assets/537d4dc3-2329-4a76-a68a-62756e6d85d7" />
+
+**Key Learning**: The right deployment model depends on data sensitivity, compliance, performance needs, and budget. Hybrid and multi-cloud models offer flexibility for academic environments integrating modern and legacy systems.
+
+---
+
+### Case Study 3: Cloud Service Models  
+There are three layers of cloud services:
+- **IaaS**: Offers raw computing infrastructure (e.g., EC2, S3).
+- **PaaS**: Provides pre-configured environments for development (e.g., Elastic Beanstalk).
+- **SaaS**: Fully managed software solutions (e.g., Amazon WorkDocs).
+
+This case emphasized how responsibility shifts between the cloud provider and the user. For example, in IaaS, users must manage OS patches, whereas in SaaS, AWS handles everything.
+
+<img width="1363" alt="image" src="https://github.com/user-attachments/assets/b7691085-8f06-4158-92ef-a53a1543e534" />
+<img width="604" alt="image" src="https://github.com/user-attachments/assets/04b43136-a8fb-407f-84ea-1aa086245d13" />
+
+**Key Learning**: Service model selection should reflect the organization’s technical maturity and need for control. In academic labs, PaaS and SaaS reduce setup complexity for students and researchers.
+
+<img width="639" alt="image" src="https://github.com/user-attachments/assets/243d41cc-b1a4-4504-8dd0-9e130a7ec219" />
+
+---
+
+## AWS Cost Analysis
+
+### Case Study 4: Total Cost of Ownership (TCO)  
+Using AWS’s TCO calculator, this case calculated the long-term financial benefits of using AWS instead of maintaining on-premises hardware. Elements such as hardware depreciation, electricity, IT salaries, and hardware refresh cycles were considered.
+
+<img width="639" alt="image" src="https://github.com/user-attachments/assets/70956acd-b71d-4e75-970c-19e2eccff87c" />
+
+**Key Learning**: Cloud services offer significant cost savings in the long term and reduce overhead, particularly beneficial for budget-constrained institutions like schools or universities.
+
+---
+
+### Case Study 5: AWS Pricing Calculator  
+Simulated the monthly cost of AWS resources like EC2, S3, and EBS based on workload demands. Included scenarios for research projects with variable data needs and for hosting academic web applications.
+
+<img width="1438" alt="image" src="https://github.com/user-attachments/assets/f453f203-264f-48b0-9f3a-279f7377c564" />
+
+**Key Learning**: AWS Pricing Calculator is a crucial tool for forecasting costs and aligning infrastructure needs with financial planning. Understanding on-demand vs. reserved pricing models allows institutions to optimize expenses.
+
+---
+
+### Case Study 6: AWS Support Plans  
+Compared four support plans—Basic, Developer, Business, and Enterprise—based on service level agreements (SLAs), response times, and access to technical support.
+
+<img width="961" alt="image" src="https://github.com/user-attachments/assets/70a098a6-702c-44a2-a975-fa627f61a1aa" />
+
+**Key Learning**: Choosing the right support tier helps ensure uptime and service quality.
+
+<img width="610" alt="image" src="https://github.com/user-attachments/assets/75ca779f-2ba8-4cc7-a24f-6f5e3f6300b9" />
+
+---
+
+## AWS Global Infrastructure
+
+### Case Study 7: AWS Regions, AZs, and Edge Locations  
+Explored how AWS distributes resources across Regions, Availability Zones (AZs), and Edge Locations. Visualized how AWS ensures high availability and data redundancy by replicating services across AZs.
+
+<img width="923" alt="image" src="https://github.com/user-attachments/assets/71264c04-8dab-41b4-8efa-f818712db6c0" />
+<img width="664" alt="image" src="https://github.com/user-attachments/assets/2dc30a97-6c21-4eb5-9874-6cd445bb0bf0" />
+
+**Key Learning**: Strategic region and AZ selection enables compliance with local regulations, improves app performance, and supports disaster recovery strategies for academic services.
+
+<img width="664" alt="image" src="https://github.com/user-attachments/assets/979e1bbf-7985-40fb-b835-47ebf84c9768" />
+
+---
+
+## AWS IAM
+
+### Case Study 8: Shared Responsibility Model  
+Analyzed the division of responsibilities between AWS and the customer. AWS secures the underlying infrastructure, while customers manage their data, users, and application-level security.
+
+<img width="530" alt="image" src="https://github.com/user-attachments/assets/740c69a7-ae18-4398-ad50-72c48e6a3a37" />
+<img width="545" alt="image" src="https://github.com/user-attachments/assets/64894e32-bfb9-4c89-8432-b4aedf0f7901" />
+
+**Key Learning**: For universities, understanding this model is essential to ensure data privacy, particularly in handling student records, research data, and administrative systems.
+
+---
+
+### Case Study 9: IAM Lab – Creating Users and Policies  
+Hands-on activity involving IAM user, group, and role creation. Applied permissions using JSON-based policies and configured MFA for users accessing academic resources.
+
+<img width="661" alt="image" src="https://github.com/user-attachments/assets/bac2e69d-e919-4bf9-8627-a07f3194be06" />
+
+**Key Learning**: IAM ensures secure and role-based access, enabling fine-grained control in academic IT environments, especially when managing multiple departments and student labs.
+
+<img width="661" alt="image" src="https://github.com/user-attachments/assets/3b0042b7-41a6-4a12-abd7-cecd628419e6" />
+
+---
+
+## AWS VPC
+
+### Case Study 10: Build a Custom VPC  
+Configured a VPC with public and private subnets, NAT gateways, route tables, and security groups. Deployed a web server in a public subnet and tested internet access while securing backend resources.
+
+<img width="506" alt="image" src="https://github.com/user-attachments/assets/4c4c2b1f-9cf1-429c-8ade-554dfa6e8213" />
+
+**Key Learning**: VPC allows universities to create isolated networks in the cloud, replicating on-prem data center security for research labs, administrative tools, and student portals.
+
+<img width="506" alt="image" src="https://github.com/user-attachments/assets/4c782f28-18c9-4ea4-b5da-91fe2c860b9c" />
+
+---
+
+## AWS Lambda
+
+### Case Study 11: Deploy a Serverless Function  
+Created a Lambda function triggered by an S3 event and logged results to CloudWatch. Used Python code to process uploaded student files.
+
+<img width="642" alt="image" src="https://github.com/user-attachments/assets/248fd59f-e0b0-47dd-9d1b-d42437703c8e" />
+
+**Key Learning**: Lambda supports automated workflows (e.g., grading, notifications) without provisioning servers, ideal for academic automation and event-driven processing.
+
+<img width="624" alt="image" src="https://github.com/user-attachments/assets/33f94368-46e0-4ea2-bfeb-b0fc8448c800" />
+
+---
+
+## AWS EBS
+
+### Case Study 12: Work with Amazon EBS  
+Provisioned gp3 and io1 volumes, attached them to EC2 instances, formatted them, and created snapshots for backup. Compared throughput and IOPS between volume types.
+
+<img width="822" alt="image" src="https://github.com/user-attachments/assets/d5adfaf3-d70c-49f2-ae2d-b7c0ee345646" />
+
+**Key Learning**: EBS provides persistent, block-level storage with backup and recovery features critical for academic databases, research applications, and file systems.
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/f6458ae1-8f31-435c-9a6b-7299c7816338" />
+
+---
+## Conclusion
+
+This AWS Cloud Foundations portfolio serves as both a reflective academic project and a practical demonstration of cloud competency. Through twelve detailed case studies, it provides insight into key cloud computing principles including infrastructure design, cost optimization, secure access control, network segmentation, serverless automation, and scalable storage solutions.
+
+Each case study connects theoretical understanding with hands-on application, enabling the translation of abstract cloud concepts into real-world scenarios. From deploying virtual private clouds to automating workflows with Lambda, this portfolio reflects an evolving capability to navigate and implement modern cloud architecture using AWS tools.
